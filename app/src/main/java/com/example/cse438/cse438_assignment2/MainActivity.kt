@@ -2,6 +2,7 @@ package com.example.cse438.cse438_assignment2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.cse438.cse438_assignment2.R
 
 class MainActivity : AppCompatActivity() {
 
