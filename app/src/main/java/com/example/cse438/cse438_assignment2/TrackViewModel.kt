@@ -14,7 +14,7 @@ class TrackViewModel (application: Application): AndroidViewModel(application){
         public var trackRepository : TrackRepository = TrackRepository()
 
         //request to get populate breweries
-        fun getTrackByName(param: String){
+        fun getTrackByTitle(param: String){
             trackRepository.getTrackBySearch(trackList, param, true)
         }
 
