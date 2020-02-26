@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import android.widget.GridView
 import android.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -12,6 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cse438.cse438_assignment2.Adapter.TrackListAdapter
 import com.example.cse438.cse438_assignment2.R
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import androidx.recyclerview.widget.GridLayoutManager
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,14 +36,15 @@ class MainActivity : AppCompatActivity() {
 
         //set initial variables
         searchBox = findViewById<EditText>(R.id.search_box)
-        searchButton = findViewById<SearchView>(R.id.search_button)
+        //searchButton = findViewById<SearchView>(R.id.search_button)
         viewModel = ViewModelProviders.of(this).get(TrackViewModel::class.java)
 
         //set recycler view
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val adapter = TrackListAdapter(trackList as ArrayList<Track>)
+        val numberOfColumns: Int = 2
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = GridLayoutManager(this, numberOfColumns)
 
         //observe the allEvents LiveData
         viewModel.trackList.observe(this, Observer { tracks ->
@@ -46,6 +53,8 @@ class MainActivity : AppCompatActivity() {
             trackList.addAll(tracks)
             adapter.notifyDataSetChanged()
         })
+        //autofill the recycler view on creation
+        viewModel.getTrackByArtist("saint louis")
 
         //click listener for when search button is pressed from edit text
         searchBox.setOnEditorActionListener() { v, actionId, event ->

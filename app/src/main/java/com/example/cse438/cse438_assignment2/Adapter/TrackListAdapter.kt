@@ -7,13 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cse438.cse438_assignment2.Data.Track
 import com.example.cse438.cse438_assignment2.R
 
+
+
+
 //Defining and binding for the view holder
 class TrackViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.track_list_item, parent, false)) {
     private val trackNameView: TextView
 
     init {
-        trackNameView = itemView.findViewById(R.id.track_name)
+        trackNameView = itemView.findViewById(R.id.my_song_name)
     }
 
     fun bind(track:Track){
@@ -37,4 +40,5 @@ class TrackListAdapter(private val list: ArrayList<Track>)
 
     override fun getItemCount(): Int = list.size
 
-}
+    }
+

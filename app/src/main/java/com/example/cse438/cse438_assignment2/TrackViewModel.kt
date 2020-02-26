@@ -13,14 +13,14 @@ class TrackViewModel (application: Application): AndroidViewModel(application){
         public var trackList: MutableLiveData<List<Track>> = MutableLiveData()
         public var trackRepository : TrackRepository = TrackRepository()
 
-        //request to get populate breweries
-        fun getTrackByTitle(param: String){
-            trackRepository.getTrackBySearch(trackList, param, true)
+        //request to get populate track by title
+        fun getTrackBySearch(param: String){
+            trackRepository.getTrackBySearch(trackList, param, false)
         }
 
-        //request to search for breweries
+        //request to search for track by artist
         fun getTrackByArtist(param: String){
-            trackRepository.getTrackBySearch(trackList, param, false)
+            trackRepository.getTrackBySearch(trackList, param, true)
         }
 
 

@@ -5,10 +5,13 @@ import java.util.*
 data class Track(
     //track object
     val songName:String ,
-    val artist: String,
+    val artistName: String,
+    val position: Int,
+    val songLength: Int,
     val releasedDate: Date,
     val songRank: Int,
-    val songLength: Int
+    val gain:Double
+
 
 )
 

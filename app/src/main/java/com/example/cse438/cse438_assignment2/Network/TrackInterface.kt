@@ -6,14 +6,13 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface TrackInterface {
-    //@GET("api_category.php")
-    //suspend fun getCategories(): Response<CategoryPayload>
-
-    //@GET("api.php")
-    //suspend fun getQuestionsBySearch(@Query("category") category: String, @Query("amount") amount: String) : Response<Payload>
 
     //Search by parameters
-    @GET("search")
-    suspend fun getTrackBySearch(@Query("q") query: String)
+    @GET("track/search")
+    suspend fun getTrackBySearch(@Query("query") query: String)
             : Response<List<Track>>
+
+    @GET("by_Artist")
+    suspend fun getTrackByArtist(@Query("by_Artist") by_artist:String)
+             :Response<List<Track>>
 }
