@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var searchBox: EditText
 
     //An arraylist that holds the tracks
-    var  trackList: ArrayList<Track> = ArrayList<Track>()
+    var  trackList: ArrayList<Track> = ArrayList()
 
     //onCreate
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         //set recycler view
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val adapter = TrackListAdapter(trackList as ArrayList<Track>)
+        val adapter = TrackListAdapter(trackList)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -43,16 +43,22 @@ class MainActivity : AppCompatActivity() {
         viewModel.trackList.observe(this, Observer { tracks ->
             // Update the cached copy of the words in the adapter.
             trackList.clear()
-            trackList.addAll(tracks)
+            trackList.addAll(tracks.data)
+            //for(elt in trackList) {
+                //println(elt)
+            //}
             adapter.notifyDataSetChanged()
         })
+
+        //autofill the recycler view on creation
+        viewModel.getTracks("taylor swift")
 
         //click listener for when search button is pressed from edit text
         searchBox.setOnEditorActionListener() { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 //your code here
                 val input: String = searchBox.text.toString()
-                viewModel.getTrackByArtist(input)
+                viewModel.getTracks(input)
                 true
             }
             false

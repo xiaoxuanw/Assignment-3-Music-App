@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">cse438-assignment3</string>
+    <string name="track_name">track name</string>
+    <string name="my_tracks">Track</string>
 </resources>

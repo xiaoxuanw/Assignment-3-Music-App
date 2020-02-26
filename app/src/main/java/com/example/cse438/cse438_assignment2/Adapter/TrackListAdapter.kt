@@ -10,14 +10,10 @@ import com.example.cse438.cse438_assignment2.R
 //Defining and binding for the view holder
 class TrackViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.track_list_item, parent, false)) {
-    private val trackNameView: TextView
-
-    init {
-        trackNameView = itemView.findViewById(R.id.track_name)
-    }
+    private val trackNameView: TextView = itemView.findViewById(R.id.track_name)
 
     fun bind(track:Track){
-        trackNameView?.text = track.songName
+        trackNameView?.text = track.title
     }
 }
 
@@ -33,6 +29,7 @@ class TrackListAdapter(private val list: ArrayList<Track>)
     override fun onBindViewHolder(holder: TrackViewHolder, position: Int) {
         val track: Track = list[position]
         holder.bind(track)
+        //println(track.title)
     }
 
     override fun getItemCount(): Int = list.size
