@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">cse438-assignment3</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="track_name">track name</string>
+    <string name="my_tracks">Track</string>
 </resources>
