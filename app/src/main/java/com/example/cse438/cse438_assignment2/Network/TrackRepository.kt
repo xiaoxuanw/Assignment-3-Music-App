@@ -46,12 +46,42 @@ class TrackRepository {
         }
     }
 
-    //search for chart
-    //searches for breweries based on string value
+    // search for chart
     fun getTrackByChart(resBody : MutableLiveData<Chart>) {
         //set the coroutine on a background thread
         CoroutineScope(Dispatchers.IO).launch {
             var response: Response<Chart> = service.getTrackByChart()
+
+            //when the coroutine finishes
+            withContext(Dispatchers.Main){
+                try{
+                    //success case
+                    if(response.isSuccessful){
+                        //println(response.body()?.size.toString() + " is the size")
+                        resBody.value = response.body()
+                        println("success")
+                        println(response)
+
+                    } else{
+                        //response error
+                        println("HTTP error")
+                    }
+                }catch (e: HttpException) {
+                    //http exception
+                    println("HTTP Exception")
+                } catch (e: Throwable) {
+                    //error
+                    println("Error")
+                }
+            }
+        }
+    }
+
+
+    fun getTrackByTrackID(resBody : MutableLiveData<Chart>, param: String) {
+        //set the coroutine on a background thread
+        CoroutineScope(Dispatchers.IO).launch {
+            var response: Response<Chart> = service.getTrackByTrackID(param)
 
             //when the coroutine finishes
             withContext(Dispatchers.Main){
