@@ -5,18 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
+        android:id="@+id/tabs_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabMode="fixed"
-        android:orientation="horizontal"/>
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager_main"
+        app:tabMode="fixed" >
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/home_tab"
+        android:text="Home"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tab_layout" app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_height="wrap_content"/>
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/playList_tab"
+            android:text="PlayList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.tabs.TabLayout>
+
 
 
 

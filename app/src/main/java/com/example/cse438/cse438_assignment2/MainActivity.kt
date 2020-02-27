@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         searchBox = findViewById<EditText>(R.id.search_box)
         searchButton = findViewById<SearchView>(R.id.search_button)
         viewModel = ViewModelProviders.of(this).get(TrackViewModel::class.java)
-        playListTab = tab_playlist
+        playListTab = playList_tab
 
         //set recycler view
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
