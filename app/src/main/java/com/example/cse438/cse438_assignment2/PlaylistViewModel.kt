@@ -1,6 +1,6 @@
 package com.example.cse438.cse438_assignment2
 
-/*
+
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -17,7 +17,7 @@ class PlaylistViewModel (application: Application): AndroidViewModel(application
 
     init {
         repository = PlaylistRepository(PlaylistRoomDatabase.getDatabase(application).playlistDao())
-          _playlist = repository.allPlaylist
+        _playlist = repository.allPlaylist
     }
 
     fun getPlaylist(): LiveData<List<Playlist>> {
@@ -27,4 +27,4 @@ class PlaylistViewModel (application: Application): AndroidViewModel(application
     fun insert(playlist: Playlist) {
         repository.insert(playlist)
     }
-}*/
+}
