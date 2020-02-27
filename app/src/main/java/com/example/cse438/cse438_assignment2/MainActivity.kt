@@ -1,11 +1,13 @@
 package com.example.cse438.cse438_assignment2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.SearchView
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
@@ -14,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cse438.cse438_assignment2.Adapter.TrackListAdapter
 import com.example.cse438.cse438_assignment2.R
+import com.google.android.material.tabs.TabItem
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var searchButton: SearchView
     lateinit var searchBox: EditText
     lateinit var albumCover: List<ImageView>
+    lateinit var playListTab: TabItem
 
     //An arraylist that holds the tracks
     var  trackList: ArrayList<Track> = ArrayList()
@@ -35,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         searchBox = findViewById<EditText>(R.id.search_box)
         searchButton = findViewById<SearchView>(R.id.search_button)
         viewModel = ViewModelProviders.of(this).get(TrackViewModel::class.java)
+        playListTab = tab_playlist
 
         //set recycler view
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
@@ -74,6 +80,13 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             false
+        }
+
+        //Set listener for tab
+        playListTab.setOnClickListener {
+            val intent = Intent(this, infoActivity::class.java)
+            startActivity(intent)
+            println("view switched")
         }
     }
 }
