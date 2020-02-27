@@ -78,10 +78,10 @@ class TrackRepository {
     }
 
 
-    fun getTrackByTrackID(resBody : MutableLiveData<Chart>) {
+    fun getTrackByTrackID(resBody : MutableLiveData<Chart>, param: String) {
         //set the coroutine on a background thread
         CoroutineScope(Dispatchers.IO).launch {
-            var response: Response<Chart> = service.getTrackByChart()
+            var response: Response<Chart> = service.getTrackByTrackID(param)
 
             //when the coroutine finishes
             withContext(Dispatchers.Main){
