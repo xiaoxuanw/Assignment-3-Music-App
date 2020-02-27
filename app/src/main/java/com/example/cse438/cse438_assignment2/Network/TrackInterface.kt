@@ -1,5 +1,6 @@
 package com.example.cse438.cse438_assignment2.Network
 
+import com.example.cse438.cse438_assignment2.Data.Chart
 import com.example.cse438.cse438_assignment2.Data.Data
 import com.example.cse438.cse438_assignment2.Data.Track
 import retrofit2.Response
@@ -18,4 +19,8 @@ interface TrackInterface {
     @GET("search")
     suspend fun getTrackBySearchQuery(@Query("q") query: String)
             : Response<Data>
+
+    @GET("chart/0/tracks")
+    suspend fun getTrackByChart()
+            : Response<Chart>
 }
