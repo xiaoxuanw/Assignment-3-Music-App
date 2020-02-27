@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     //An arraylist that holds the tracks
     var  trackList: ArrayList<Track> = ArrayList()
-
+    var chartList: ArrayList<Track> = ArrayList()
     //onCreate
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         //set recycler view
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val adapter = TrackListAdapter(trackList)
+        //val adapter = TrackListAdapter(chartList)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = GridLayoutManager(this,2)
 
@@ -51,8 +52,19 @@ class MainActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         })
 
+        //observe the allEvents LiveData
+        viewModel.chartList.observe(this, Observer { tracks ->
+            // Update the cached copy of the words in the adapter.
+            chartList.clear()
+            chartList.addAll(tracks.tracks.data)
+            for(elt in trackList) {
+            println(elt)
+            }
+            adapter.notifyDataSetChanged()
+        })
+
         //autofill the recycler view on creation
-        viewModel.getTracks("taylor swift")
+        viewModel.getTracks("eminem")
 
         //click listener for when search button is pressed from edit text
         searchBox.setOnEditorActionListener() { v, actionId, event ->
