@@ -1,12 +1,14 @@
 package com.example.cse438.cse438_assignment2.Network
 
-/*import androidx.lifecycle.LiveData
+import androidx.lifecycle.LiveData
+import androidx.room.Dao
 import com.example.cse438.cse438_assignment2.Data.Track
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.cse438.cse438_assignment2.Data.Playlist
 
-interface interPlaylistDao {
+@Dao
+interface PlaylistDao {
     @Query("SELECT * FROM playlist")
     fun getPlaylists(): LiveData<List<Playlist>>
 
@@ -15,4 +17,4 @@ interface interPlaylistDao {
 
     @Query("DELETE FROM playlist")
     fun deleteAll()
-}*/
+}

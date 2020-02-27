@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         //set recycler view
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val adapter = TrackListAdapter(chartList)
+        val adapter = TrackListAdapter(chartList, this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = GridLayoutManager(this,2)
 
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         //click listener for when search button is pressed from edit text
         searchBox.setOnEditorActionListener() { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                val searchAdapter = TrackListAdapter(trackList)
+                val searchAdapter = TrackListAdapter(trackList,this)
                 recyclerView.adapter = searchAdapter
                 recyclerView.layoutManager = GridLayoutManager(this,2)
 
