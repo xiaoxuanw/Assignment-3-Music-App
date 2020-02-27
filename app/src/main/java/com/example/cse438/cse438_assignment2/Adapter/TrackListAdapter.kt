@@ -23,6 +23,13 @@ class TrackViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
             .load(track.album.cover)
             .into(albumImage)
     }
+
+    fun setClickListener(track: Track){
+        albumImage.setOnClickListener(){
+
+            println("clicked")
+        }
+    }
 }
 
 //define the adapter for the recycler view
@@ -38,6 +45,7 @@ class TrackListAdapter(private val list: ArrayList<Track>)
         val track: Track = list[position]
         holder.bind(track)
         holder.bindImage(track)
+        holder.setClickListener(track)
         //println(track.title)
     }
 

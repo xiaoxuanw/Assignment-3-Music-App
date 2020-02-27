@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewModel: TrackViewModel
     lateinit var searchButton: SearchView
     lateinit var searchBox: EditText
+    lateinit var albumCover: List<ImageView>
 
     //An arraylist that holds the tracks
     var  trackList: ArrayList<Track> = ArrayList()
@@ -39,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = TrackListAdapter(chartList)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = GridLayoutManager(this,2)
+
 
         //observe the allEvents LiveData
         viewModel.chartList.observe(this, Observer { tracks ->
