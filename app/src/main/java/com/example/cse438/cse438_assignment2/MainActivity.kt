@@ -36,39 +36,35 @@ class MainActivity : AppCompatActivity() {
 
         //set recycler view
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val adapter = TrackListAdapter(trackList)
-        //val adapter = TrackListAdapter(chartList)
+        val adapter = TrackListAdapter(chartList)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = GridLayoutManager(this,2)
-
-        //observe the allEvents LiveData
-        viewModel.trackList.observe(this, Observer { tracks ->
-            // Update the cached copy of the words in the adapter.
-            trackList.clear()
-            trackList.addAll(tracks.data)
-            //for(elt in trackList) {
-                //println(elt)
-            //}
-            adapter.notifyDataSetChanged()
-        })
 
         //observe the allEvents LiveData
         viewModel.chartList.observe(this, Observer { tracks ->
             // Update the cached copy of the words in the adapter.
             chartList.clear()
-            chartList.addAll(tracks.tracks.data)
-            for(elt in trackList) {
-            println(elt)
-            }
+            chartList.addAll(tracks.data)
             adapter.notifyDataSetChanged()
         })
 
         //autofill the recycler view on creation
-        viewModel.getTracks("eminem")
+        viewModel.getCover()
 
         //click listener for when search button is pressed from edit text
         searchBox.setOnEditorActionListener() { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                val searchAdapter = TrackListAdapter(trackList)
+                recyclerView.adapter = searchAdapter
+                recyclerView.layoutManager = GridLayoutManager(this,2)
+
+                //observe the allEvents LiveData
+                viewModel.trackList.observe(this, Observer { tracks ->
+                    // Update the cached copy of the words in the adapter.
+                    trackList.clear()
+                    trackList.addAll(tracks.data)
+                    adapter.notifyDataSetChanged()
+                })
                 //your code here
                 val input: String = searchBox.text.toString()
                 viewModel.getTracks(input)
