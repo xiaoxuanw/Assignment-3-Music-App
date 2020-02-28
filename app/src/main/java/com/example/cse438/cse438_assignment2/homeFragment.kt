@@ -54,8 +54,6 @@ class homeFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(TrackViewModel::class.java)
         val activity: Activity? = activity
 
-        //set context
-        var context = this.context
         //set recycler view
         val recyclerView = recyclerView
         val adapter = TrackListAdapter(chartList,activity)
