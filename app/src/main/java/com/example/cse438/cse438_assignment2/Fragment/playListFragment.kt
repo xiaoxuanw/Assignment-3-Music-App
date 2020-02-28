@@ -23,11 +23,7 @@ import kotlinx.android.synthetic.main.create_playlist.*
 import kotlinx.android.synthetic.main.create_playlist.view.*
 import kotlinx.android.synthetic.main.fragment_playlist.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-
 class playListFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     public lateinit var createPlaylistButton: Button
     private lateinit var viewModel: PlaylistViewModel
 
