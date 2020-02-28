@@ -9,13 +9,13 @@
     <EditText
         android:id="@+id/playlistName"
         android:hint="Enter Name"
-        android:inputType="number"
+        android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />   <EditText
     android:id="@+id/playlistDescription"
     android:hint="Enter Description"
-    android:inputType="number"
+    android:inputType="text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     />

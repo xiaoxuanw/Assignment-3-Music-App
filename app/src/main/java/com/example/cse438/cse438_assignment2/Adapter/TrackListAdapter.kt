@@ -30,7 +30,7 @@ class TrackViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
             .into(albumImage)
     }
 
-    fun setClickListener(track: Track, activity: Activity){
+    fun setClickListener(track: Track, activity: Activity?){
         albumImage.setOnClickListener(){
             //Extract variables from track
             var trackTitle = track.title
@@ -57,7 +57,7 @@ class TrackViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
 }
 
 //define the adapter for the recycler view
-class TrackListAdapter(private val list: ArrayList<Track>, private val activity: Activity)
+class TrackListAdapter(private val list: ArrayList<Track>, private val activity: Activity?)
     : RecyclerView.Adapter<TrackViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackViewHolder {
