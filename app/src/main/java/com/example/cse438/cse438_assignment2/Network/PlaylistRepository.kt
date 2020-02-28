@@ -18,4 +18,10 @@ class PlaylistRepository(private val playlistDao: PlaylistDao) {
         }
     }
 
+    fun deletePlaylist(playlist: Playlist){
+        CoroutineScope(Dispatchers.IO).launch {
+            playlistDao!!.deletePlaylist(playlist.playlistName)
+        }
+    }
+
 }

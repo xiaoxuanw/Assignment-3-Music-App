@@ -72,13 +72,13 @@ class playListFragment : Fragment() {
         mAlertDialog.submitPlaylist.setOnClickListener {
             val p = Playlist(
                 dialogView.playlistName.text.toString(),
-                dialogView.playlistDescription.text.toString()
+                dialogView.playlistDescription.text.toString(),
+                dialogView.playlistGenre.text.toString(),
+                dialogView.playlistRating.text.toString().toInt()
             )
             // If the string is empty, we do not want to accept that as an input
             viewModel!!.insert(p)
             mAlertDialog.dismiss()
-
-
         }
 
     }

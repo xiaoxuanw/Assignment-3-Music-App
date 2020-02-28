@@ -14,6 +14,10 @@ interface PlaylistDao {
     @Insert
     fun insert(playlist: Playlist)
 
+    @Query("DELETE FROM playlist WHERE playlistName = :playlist_Name")
+    fun deletePlaylist(playlist_Name:String)
+
     @Query("DELETE FROM playlist")
     fun deleteAll()
+
 }

@@ -16,4 +16,13 @@ interface TracklistDao {
 
     @Query("DELETE FROM trackList")
     fun deleteAll()
+
+    @Query("SELECT * FROM trackList WHERE playlist_id=:playlistId")
+    fun findTracksForPlaylist(playlistId:Int)
+
+    @Query("DELETE FROM trackList WHERE playlist_id=:playlistId")
+    fun deleteTracksForPlaylist(playlistId:Int)
+
+    @Query("DELETE FROM trackList WHERE trackName = :tracklist_Name")
+    fun deletePlaylist(tracklist_Name:String)
 }

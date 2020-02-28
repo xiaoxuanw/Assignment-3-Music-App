@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "trackList",
     foreignKeys = arrayOf(ForeignKey(entity = Playlist::class,
         parentColumns = arrayOf("id"),
-        childColumns = arrayOf("id"),
+        childColumns = arrayOf("playlist_id"),
         onDelete = ForeignKey.CASCADE)))
 data class Tracklist(
     @ColumnInfo(name = "trackName")
@@ -18,7 +18,9 @@ data class Tracklist(
     @ColumnInfo(name = "trackTime")
     val trackTime: Int,
     @ColumnInfo(name = "trackRating")
-    val trackRating: Int
+    val trackRating: Int,
+    @ColumnInfo(name = "playlist_id")
+    val playlist_id: Int
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
