@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
+    android:layout_marginBottom="24dp"
+    android:id="@+id/playlist_item_layout">
+
+    <TextView
+        android:id="@+id/songNameInPlaylist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textSize="16pt"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/artistNameInPlaylist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/songNameInPlaylist"
+        android:layout_marginTop="12dp"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
+
+</RelativeLayout>

@@ -27,7 +27,7 @@
     <EditText
         android:id="@+id/playlistRating"
         android:hint="Enter Rating"
-        android:inputType="text"
+        android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <RelativeLayout
