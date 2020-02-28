@@ -27,25 +27,26 @@ class PlaylistSelectionViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         playlistDescription.text = playlist.playlistDescription
 
     }
-    fun setClickListener(track: Track, activity: Activity?){
+    fun setClickListener(playlist: Playlist, activity: Activity?){
         playlistItemLayout.setOnClickListener(){
             println("clicked")
         }
     }
 }
 //create the listener for the recycler view
-class PlaylistSelectionAdapter(private val list: ArrayList<Playlist>?)
-    : RecyclerView.Adapter<PlaylistViewHolder>() {
+class PlaylistSelectionAdapter(private val list: ArrayList<Playlist>?,private val activity: Activity?)
+    : RecyclerView.Adapter<PlaylistSelectionViewHolder>() {
     private var listEvents : ArrayList<Playlist>? = list
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaylistViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaylistSelectionViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return PlaylistViewHolder(inflater, parent)
+        return PlaylistSelectionViewHolder(inflater, parent)
     }
 
     //bind the object
-    override fun onBindViewHolder(holder: PlaylistViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PlaylistSelectionViewHolder, position: Int) {
         val event: Playlist = listEvents!!.get(position)
         holder.bind(event)
+        holder.setClickListener(event,activity)
     }
 
     //set the count

@@ -1,5 +1,6 @@
 package com.example.cse438.cse438_assignment2.fragment
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.net.Uri
@@ -84,7 +85,8 @@ class playListFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        var adapter = PlaylistAdapter(playlistList)
+        val activity: Activity? = activity
+        var adapter = PlaylistAdapter(playlistList,activity)
         playlist_recycler_view.adapter = adapter
         playlist_recycler_view.layoutManager = LinearLayoutManager(this.context)
         playlist_recycler_view.addItemDecoration(

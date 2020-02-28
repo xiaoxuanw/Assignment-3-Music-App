@@ -1,5 +1,6 @@
 package com.example.cse438.cse438_assignment2.Fragment
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.cse438.cse438_assignment2.Adapter.PlaylistAdapter
 import com.example.cse438.cse438_assignment2.Adapter.PlaylistSelectionAdapter
 import com.example.cse438.cse438_assignment2.Data.Playlist
@@ -35,7 +37,7 @@ class selectionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_playlist, container, false)
+        return inflater.inflate(R.layout.fragment_playlist_selection, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,9 +52,11 @@ class selectionFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        var adapter = PlaylistSelectionAdapter(playlistList)
+        val activity: Activity? = activity
+
+        var adapter = PlaylistSelectionAdapter(playlistList,activity)
         playlist_selection_recycler.adapter = adapter
-        playlist_selection_recycler.layoutManager = LinearLayoutManager(this.context)
+        playlist_selection_recycler.layoutManager = LinearLayoutManager(this.context) as RecyclerView.LayoutManager?
         playlist_selection_recycler.addItemDecoration(
             DividerItemDecoration(
                 context,
