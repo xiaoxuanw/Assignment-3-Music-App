@@ -14,7 +14,8 @@
         android:layout_marginTop="12dp"
         android:textSize="16pt"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
     <TextView
         android:id="@+id/playlistTrackArtist"
         android:layout_width="wrap_content"
@@ -23,7 +24,8 @@
         android:layout_marginTop="12dp"
         android:textSize="12pt"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
     <TextView
         android:id="@+id/playlistTrackAlbum"
         android:layout_width="wrap_content"
@@ -32,7 +34,8 @@
         android:layout_marginTop="12dp"
         android:textSize="8pt"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
     <TextView
         android:id="@+id/playlistTrackGenre"
         android:layout_width="wrap_content"
@@ -41,7 +44,8 @@
         android:layout_marginTop="12dp"
         android:textSize="8pt"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
     <TextView
         android:id="@+id/playlistTrackDuration"
         android:layout_width="wrap_content"
@@ -50,7 +54,8 @@
         android:layout_marginTop="12dp"
         android:textSize="8pt"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
     <TextView
         android:id="@+id/playlistTrackRating"
         android:layout_width="wrap_content"
@@ -59,6 +64,7 @@
         android:layout_marginTop="12dp"
         android:textSize="8pt"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
 
 </RelativeLayout>

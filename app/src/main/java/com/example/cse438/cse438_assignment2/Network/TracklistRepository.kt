@@ -18,5 +18,11 @@ class TracklistRepository (private val tracklistDao: TracklistDao){
         }
     }
 
+    fun selectAllTracks(){
+        CoroutineScope(Dispatchers.IO).launch {
+            tracklistDao.getTracklists()
+        }
+    }
+
 
 }
