@@ -9,7 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cse438.cse438_assignment2.Adapter.PlaylistAdapter
 import com.example.cse438.cse438_assignment2.Data.Playlist
 import com.example.cse438.cse438_assignment2.PlaylistViewModel
 
@@ -25,7 +29,7 @@ import kotlinx.android.synthetic.main.fragment_playlist.*
 class playListFragment : Fragment() {
     // TODO: Rename and change types of parameters
     public lateinit var createPlaylistButton: Button
-    private var playlistViewModel: PlaylistViewModel? = null
+    private lateinit var viewModel: PlaylistViewModel
 
     val playlistList: ArrayList<Playlist> = ArrayList()
 
@@ -45,7 +49,7 @@ class playListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //set the view model
-        playlistViewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
 
         //set the buttons
         createPlaylistButton = addPlaylistButton
@@ -53,6 +57,7 @@ class playListFragment : Fragment() {
             dialogView()
         }
     }
+
 
     private fun dialogView() {
         // Opens the dialog view asking the user for
@@ -63,7 +68,7 @@ class playListFragment : Fragment() {
             .setTitle("Enter playlist name and description")
         val mAlertDialog = mBuilder.show()
 
-        playlistViewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
 
 
         // Sets an onclick listener on the dialog box button
@@ -73,11 +78,31 @@ class playListFragment : Fragment() {
                 dialogView.playlistDescription.text.toString()
             )
             // If the string is empty, we do not want to accept that as an input
-            playlistViewModel!!.insert(p)
-
+            viewModel!!.insert(p)
             mAlertDialog.dismiss()
-        }
-    }
 
-}
+
+        }
+
+    }
+    override fun onStart() {
+        super.onStart()
+
+        var adapter = PlaylistAdapter(playlistList)
+        playlist_recycler_view.adapter = adapter
+        playlist_recycler_view.layoutManager = LinearLayoutManager(this.context)
+        playlist_recycler_view.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
+        viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
+        viewModel!!._playlist.observe(this, Observer { playlists ->
+            // Update the cached copy of the words in the adapter.
+            playlistList.addAll(playlists)
+            adapter.notifyDataSetChanged()
+        })
+    }
+    }
 

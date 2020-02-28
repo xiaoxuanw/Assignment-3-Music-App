@@ -14,7 +14,7 @@ class PlaylistRepository(private val playlistDao: PlaylistDao) {
 
     fun insert(playlist: Playlist){
         CoroutineScope(Dispatchers.IO).launch {
-            playlistDao.insert(playlist)
+            playlistDao!!.insert(playlist)
         }
     }
 

@@ -7,7 +7,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.cse438.cse438_assignment2.Network.PlaylistDao
 
-@Database(entities = arrayOf(Playlist::class), version = 2)
+@Database(entities = arrayOf(Playlist::class), version = 2, exportSchema = false)
 public abstract class PlaylistRoomDatabase : RoomDatabase() {
 
     abstract fun playlistDao(): PlaylistDao
