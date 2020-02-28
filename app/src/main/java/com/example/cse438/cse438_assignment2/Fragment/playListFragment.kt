@@ -22,7 +22,6 @@ import kotlinx.android.synthetic.main.activity_info.*
 import kotlinx.android.synthetic.main.create_playlist.*
 import kotlinx.android.synthetic.main.create_playlist.view.*
 import kotlinx.android.synthetic.main.fragment_playlist.*
-import kotlinx.android.synthetic.main.playlist_item.view.*
 
 class playListFragment : Fragment() {
     public lateinit var createPlaylistButton: Button
