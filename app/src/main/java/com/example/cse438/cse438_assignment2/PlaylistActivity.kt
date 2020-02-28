@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.cse438.cse438_assignment2.Fragment.realSelectionFragment
+import com.example.cse438.cse438_assignment2.Fragment.selectionFragment
 import kotlinx.android.synthetic.main.activity_playlist.*
 import kotlinx.android.synthetic.main.create_playlist.*
 import kotlinx.android.synthetic.main.create_playlist.view.*
@@ -39,7 +39,7 @@ class PlaylistActivity : AppCompatActivity() {
 
         //set up selection fragment
         val fragment =
-            realSelectionFragment()
+            selectionFragment()
         var bundle = Bundle()
         fragment.arguments=bundle
         bundle.putString("trackTitle",trackTitle)

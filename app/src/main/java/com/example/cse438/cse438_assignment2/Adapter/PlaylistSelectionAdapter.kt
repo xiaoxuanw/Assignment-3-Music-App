@@ -2,22 +2,22 @@ package com.example.cse438.cse438_assignment2.Adapter
 
 import android.app.Activity
 import android.app.Application
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cse438.cse438_assignment2.*
 import com.example.cse438.cse438_assignment2.Data.Playlist
 import com.example.cse438.cse438_assignment2.Data.PlaylistRoomDatabase
 import com.example.cse438.cse438_assignment2.Data.Track
 import com.example.cse438.cse438_assignment2.Data.Tracklist
 import com.example.cse438.cse438_assignment2.Network.PlaylistRepository
 import com.example.cse438.cse438_assignment2.Network.TracklistRepository
-import com.example.cse438.cse438_assignment2.PlaylistViewModel
-import com.example.cse438.cse438_assignment2.R
-import com.example.cse438.cse438_assignment2.TracklistViewModel
 
 
 class PlaylistSelectionViewHolder(inflater: LayoutInflater, parent: ViewGroup, trackTitle:String, trackArtistName: String, trackDuration:Int) :
@@ -49,7 +49,10 @@ class PlaylistSelectionViewHolder(inflater: LayoutInflater, parent: ViewGroup, t
                 playlist.id
                 )
             repository.insert(t)
-            println("clicked")
+            Toast.makeText(activity,"Track Inserted", Toast.LENGTH_SHORT).show();
+            //Intent to info activity
+            val intent = Intent(activity, MainActivity::class.java)
+            activity?.startActivity(intent)
         }
     }
 }

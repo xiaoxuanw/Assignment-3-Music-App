@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Lab3_real.iml" filepath="$PROJECT_DIR$/.idea/Lab3_real.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="cse438-assignment2/app" />
-      <module fileurl="file://$PROJECT_DIR$/cse438-assignment2.iml" filepath="$PROJECT_DIR$/cse438-assignment2.iml" group="cse438-assignment2" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cse438-assignment2.iml" filepath="$PROJECT_DIR$/cse438-assignment2.iml" />
     </modules>
   </component>
 </project>

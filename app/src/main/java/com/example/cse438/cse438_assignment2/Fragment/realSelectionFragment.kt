@@ -40,6 +40,14 @@ class realSelectionFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val intent = activity!!.intent
+        trackTitle = intent.getStringExtra("trackTitle")
+        trackArtistName = intent.getStringExtra("trackArtistName")
+        trackAlbumTitle = intent.getStringExtra("trackAlbumTitle")
+        trackRank = intent.getIntExtra("trackRank",0)
+        trackDuration = intent.getIntExtra("trackDuration",0)
+        trackAlbumCover = intent.getStringExtra("trackAlbumCover")
+
     }
 
     override fun onCreateView(
@@ -56,13 +64,7 @@ class realSelectionFragment : Fragment() {
         //set the view model
         viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
 
-        var bundle = Bundle()
-        trackTitle = bundle.getString("trackTitle")
-        trackArtistName = bundle.getString("trackArtistName")
-        trackAlbumTitle = bundle.getString("trackAlbumTitle")
-        trackRank = bundle.getInt("trackRank")
-        trackDuration = bundle.getInt("trackDuration")
-        trackAlbumCover = bundle.getString("trackAlbumCover")
+
 
     }
 

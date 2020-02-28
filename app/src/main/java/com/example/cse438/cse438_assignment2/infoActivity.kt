@@ -6,11 +6,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.cse438.cse438_assignment2.Data.Album
-import com.example.cse438.cse438_assignment2.Fragment.selectionFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_info.*
-import java.time.Duration
 
 class infoActivity : AppCompatActivity(){
     var trackTitle : String = ""

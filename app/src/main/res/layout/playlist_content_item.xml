@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
+    android:layout_marginBottom="24dp"
+    android:id="@+id/playlist_content_item_layout">
+
+    <TextView
+        android:id="@+id/playlistTrackName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textSize="16pt"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
+    <TextView
+        android:id="@+id/playlistTrackArtist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/playlistTrackName"
+        android:layout_marginTop="12dp"
+        android:textSize="12pt"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
+    <TextView
+        android:id="@+id/playlistTrackAlbum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/playlistTrackArtist"
+        android:layout_marginTop="12dp"
+        android:textSize="8pt"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
+    <TextView
+        android:id="@+id/playlistTrackGenre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/playlistTrackAlbum"
+        android:layout_marginTop="12dp"
+        android:textSize="8pt"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
+    <TextView
+        android:id="@+id/playlistTrackDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/playlistTrackGenre"
+        android:layout_marginTop="12dp"
+        android:textSize="8pt"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
+    <TextView
+        android:id="@+id/playlistTrackRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/playlistTrackDuration"
+        android:layout_marginTop="12dp"
+        android:textSize="8pt"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
+
+</RelativeLayout>
