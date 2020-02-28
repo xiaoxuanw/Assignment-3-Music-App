@@ -1,31 +1,27 @@
-package com.example.cse438.cse438_assignment2.fragment
+package com.example.cse438.cse438_assignment2.Fragment
 
 import android.app.AlertDialog
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cse438.cse438_assignment2.Adapter.PlaylistAdapter
+import com.example.cse438.cse438_assignment2.Adapter.PlaylistSelectionAdapter
 import com.example.cse438.cse438_assignment2.Data.Playlist
 import com.example.cse438.cse438_assignment2.PlaylistViewModel
-
 import com.example.cse438.cse438_assignment2.R
-import kotlinx.android.synthetic.main.activity_info.*
 import kotlinx.android.synthetic.main.create_playlist.*
 import kotlinx.android.synthetic.main.create_playlist.view.*
 import kotlinx.android.synthetic.main.fragment_playlist.*
-import kotlinx.android.synthetic.main.playlist_item.view.*
+import kotlinx.android.synthetic.main.fragment_playlist_selection.*
 
-class playListFragment : Fragment() {
-    public lateinit var createPlaylistButton: Button
+class selectionFragment : Fragment() {
     private lateinit var viewModel: PlaylistViewModel
 
     val playlistList: ArrayList<Playlist> = ArrayList()
@@ -48,47 +44,16 @@ class playListFragment : Fragment() {
         //set the view model
         viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
 
-        //set the buttons
-        createPlaylistButton = addPlaylistButton
-        createPlaylistButton.setOnClickListener {
-            dialogView()
-        }
     }
 
 
-    private fun dialogView() {
-        // Opens the dialog view asking the user for
-        val dialogView = LayoutInflater.from(this.context).inflate(R.layout.create_playlist, null)
-
-        val mBuilder = AlertDialog.Builder(this.context)
-            .setView(dialogView)
-            .setTitle("Enter playlist name and description")
-        val mAlertDialog = mBuilder.show()
-
-        viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
-
-
-        // Sets an onclick listener on the dialog box button
-        mAlertDialog.submitPlaylist.setOnClickListener {
-            val p = Playlist(
-                dialogView.playlistName.text.toString(),
-                dialogView.playlistDescription.text.toString()
-            )
-            // If the string is empty, we do not want to accept that as an input
-            viewModel!!.insert(p)
-            mAlertDialog.dismiss()
-
-
-        }
-
-    }
     override fun onStart() {
         super.onStart()
 
-        var adapter = PlaylistAdapter(playlistList)
-        playlist_recycler_view.adapter = adapter
-        playlist_recycler_view.layoutManager = LinearLayoutManager(this.context)
-        playlist_recycler_view.addItemDecoration(
+        var adapter = PlaylistSelectionAdapter(playlistList)
+        playlist_selection_recycler.adapter = adapter
+        playlist_selection_recycler.layoutManager = LinearLayoutManager(this.context)
+        playlist_selection_recycler.addItemDecoration(
             DividerItemDecoration(
                 context,
                 DividerItemDecoration.VERTICAL
@@ -103,4 +68,3 @@ class playListFragment : Fragment() {
         })
     }
 }
-
