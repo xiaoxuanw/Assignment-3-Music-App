@@ -40,6 +40,15 @@ class PlaylistActivity : AppCompatActivity() {
         //set up selection fragment
         val fragment =
             selectionFragment()
+        var bundle = Bundle()
+        bundle.putString("trackTitle",trackTitle)
+        bundle.putString("trackArtistName",trackArtistName)
+        bundle.putString("trackAlbumTitle",trackAlbumTitle)
+        bundle.putInt("trackRank",trackRank)
+        bundle.putInt("trackDuration",trackDuration)
+        bundle.putString("trackAlbumCover",trackAlbumCover)
+
+        //Contains slection fragment
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.playlist_container, fragment)
         transaction.commit()

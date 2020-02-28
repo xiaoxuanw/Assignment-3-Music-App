@@ -2,6 +2,7 @@ package com.example.cse438.cse438_assignment2.Fragment
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cse438.cse438_assignment2.Adapter.PlaylistAdapter
 import com.example.cse438.cse438_assignment2.Adapter.PlaylistSelectionAdapter
 import com.example.cse438.cse438_assignment2.Data.Playlist
+import com.example.cse438.cse438_assignment2.Data.Tracklist
 import com.example.cse438.cse438_assignment2.PlaylistViewModel
 import com.example.cse438.cse438_assignment2.R
 import kotlinx.android.synthetic.main.create_playlist.*
@@ -28,8 +30,16 @@ class selectionFragment : Fragment() {
 
     val playlistList: ArrayList<Playlist> = ArrayList()
 
+    var trackTitle: String = ""
+    var trackArtistName: String = ""
+    var trackAlbumTitle: String = ""
+    var trackRank: Int = 0
+    var trackDuration: Int = 0
+    var trackAlbumCover: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(
@@ -46,6 +56,14 @@ class selectionFragment : Fragment() {
         //set the view model
         viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
 
+        var bundle = Bundle()
+        trackTitle = bundle.getString("trackTitle")
+        trackArtistName = bundle.getString("trackArtistName")
+        trackAlbumTitle = bundle.getString("trackAlbumTitle")
+        trackRank = bundle.getInt("trackRank")
+        trackDuration = bundle.getInt("trackDuration")
+        trackAlbumCover = bundle.getString("trackAlbumCover")
+
     }
 
 
@@ -53,8 +71,7 @@ class selectionFragment : Fragment() {
         super.onStart()
 
         val activity: Activity? = activity
-
-        var adapter = PlaylistSelectionAdapter(playlistList,activity)
+        var adapter = PlaylistSelectionAdapter(playlistList,activity,trackTitle,trackArtistName,trackDuration)
         playlist_selection_recycler.adapter = adapter
         playlist_selection_recycler.layoutManager = LinearLayoutManager(this.context) as RecyclerView.LayoutManager?
         playlist_selection_recycler.addItemDecoration(

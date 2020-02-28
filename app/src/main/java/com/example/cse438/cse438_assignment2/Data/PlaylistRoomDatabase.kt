@@ -19,14 +19,14 @@ public abstract class PlaylistRoomDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: PlaylistRoomDatabase? = null
 
-        fun getDatabase(context: Context) : PlaylistRoomDatabase {
+        fun getDatabase(context: Context?) : PlaylistRoomDatabase {
             val temp = INSTANCE
             if(temp != null) {
                 return temp
             }
             synchronized(this) {
                 val instance = Room.databaseBuilder(
-                    context.applicationContext,
+                    context!!.applicationContext,
                     PlaylistRoomDatabase::class.java,
                     "playlist_database"
                 ).build()

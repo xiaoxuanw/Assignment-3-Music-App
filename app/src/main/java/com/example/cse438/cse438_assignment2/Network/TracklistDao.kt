@@ -18,7 +18,7 @@ interface TracklistDao {
     fun deleteAll()
 
     @Query("SELECT * FROM trackList WHERE playlist_id=:playlistId")
-    fun findTracksForPlaylist(playlistId:Int)
+    fun findTracksForPlaylist(playlistId:Int) : LiveData<List<Tracklist>>
 
     @Query("DELETE FROM trackList WHERE playlist_id=:playlistId")
     fun deleteTracksForPlaylist(playlistId:Int)

@@ -17,8 +17,6 @@ data class Tracklist(
     val trackArtistName: String,
     @ColumnInfo(name = "trackTime")
     val trackTime: Int,
-    @ColumnInfo(name = "trackRating")
-    val trackRating: Int,
     @ColumnInfo(name = "playlist_id")
     val playlist_id: Int
 ) {
