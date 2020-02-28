@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:textSize="16pt"
+        android:textSize="12pt"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:gravity="center_horizontal" />
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/playlistTrackName"
         android:layout_marginTop="12dp"
-        android:textSize="12pt"
+        android:textSize="9pt"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:gravity="center_horizontal" />
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/playlistTrackArtist"
         android:layout_marginTop="12dp"
-        android:textSize="8pt"
+        android:textSize="6pt"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:gravity="center_horizontal" />
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/playlistTrackAlbum"
         android:layout_marginTop="12dp"
-        android:textSize="8pt"
+        android:textSize="6pt"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:gravity="center_horizontal" />
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/playlistTrackGenre"
         android:layout_marginTop="12dp"
-        android:textSize="8pt"
+        android:textSize="6pt"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:gravity="center_horizontal" />
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/playlistTrackDuration"
         android:layout_marginTop="12dp"
-        android:textSize="8pt"
+        android:textSize="6pt"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:gravity="center_horizontal" />

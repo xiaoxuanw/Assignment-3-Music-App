@@ -32,9 +32,9 @@ class PlaylistContentViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         playlistTrackRating = itemView.findViewById(R.id.playlistTrackRating)
     }
     fun bind(tracklist: Tracklist) {
-        playlistTrackName.text = tracklist.trackName
-        playlistTrackArtist.text = tracklist.trackArtistName
-        playlistTrackDuration.text = tracklist.trackTime.toString()
+        playlistTrackName.text = "Playlist: " + tracklist.trackName
+        playlistTrackArtist.text = "Artist: " + tracklist.trackArtistName
+        playlistTrackDuration.text = "Duration: " + tracklist.trackTime.toString()
     }
     fun setClickListener(playlist: Playlist, activity: Activity?){
         playlistContentItemLayout.setOnClickListener(){
