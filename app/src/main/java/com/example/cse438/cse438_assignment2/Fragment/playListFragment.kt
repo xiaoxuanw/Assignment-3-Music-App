@@ -112,7 +112,7 @@ class playListFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        val activity: Activity? = activity
+        val activity: Activity? = this.activity
         var adapter = PlaylistAdapter(playlistList,activity)
         playlist_recycler_view.adapter = adapter
         playlist_recycler_view.layoutManager = LinearLayoutManager(this.context)

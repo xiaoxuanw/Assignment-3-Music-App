@@ -43,6 +43,7 @@ class PlaylistViewHolder(private val list: ArrayList<Playlist>?,inflater: Layout
             intent.putExtra("playlistRating",playlistRating)
             intent.putExtra("playlist_id",playlist_id)
             activity?.startActivity(intent)
+            println(activity)
             println("clicked")
         }
     }

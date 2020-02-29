@@ -52,27 +52,9 @@ class playlistContentActivity : AppCompatActivity() {
         playlistGenre = intent.getStringExtra("playlistGenre")
         playlistRating = intent.getIntExtra("playlistRating",0)
         playlist_id = intent.getIntExtra("playlist_id",0)
-        println(playlist_id)
+        //println(playlist_id)
 
-        //adapter
-        var adapter = PlaylistContentAdapter(playlistName,playlistGenre,playlistRating,tracklistList,this)
-        playlist_content_recycler.adapter = adapter
-        playlist_content_recycler.layoutManager = LinearLayoutManager(this)
-        playlist_content_recycler.addItemDecoration(
-            DividerItemDecoration(
-                this,
-                DividerItemDecoration.VERTICAL
-            )
-        )
 
-        viewModel = ViewModelProvider(this).get(TracklistViewModel::class.java)
-
-        viewModel.getTracklistByPlaylist(playlist_id).observe(this, Observer { tracklists ->
-            // Update the cached copy of the words in the adapter.
-            tracklistList.clear()
-            tracklistList.addAll(tracklists)
-            adapter.notifyDataSetChanged()
-        })
     }
 
     override fun onStart() {
@@ -83,10 +65,37 @@ class playlistContentActivity : AppCompatActivity() {
         playlistTitle = content_playlist_title
         playlistTitle.text = "Playlist: " + playlistName
 
-
-
+        //Set click listerner
         contentHomeButton.setOnClickListener{
-           onBackPressed()
+            //Intent to info activity
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
+
+        //adapter
+        var adapter = PlaylistContentAdapter(playlistName,playlistGenre,playlistRating,tracklistList,this)
+        //Viewmodel actions
+        viewModel = ViewModelProvider(this).get(TracklistViewModel::class.java)
+        println(playlist_id)
+        viewModel.getTracklistByPlaylist(playlist_id).observe(this, Observer { tracklists ->
+            // Update the cached copy of the tracklists in the adapter.
+            tracklistList.clear()
+            tracklistList.addAll(tracklists)
+            println("1: " + tracklistList)
+            print("2: " +tracklists)
+            adapter.notifyDataSetChanged()
+        })
+
+        adapter = PlaylistContentAdapter(playlistName,playlistGenre,playlistRating,tracklistList,this)
+        playlist_content_recycler.adapter = adapter
+        playlist_content_recycler.layoutManager = LinearLayoutManager(this)
+        playlist_content_recycler.addItemDecoration(
+            DividerItemDecoration(
+                this,
+                DividerItemDecoration.VERTICAL
+            )
+        )
+
+
     }
 }

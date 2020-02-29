@@ -18,6 +18,7 @@ class TracklistViewModel (application: Application): AndroidViewModel(applicatio
         val tracklistDao = PlaylistRoomDatabase.getDatabase(application).tracklistDao()
         repository = TracklistRepository(tracklistDao)
         _tracklist = repository.allTracklist
+        _tracklistById = repository.tracklistById
     }
 
     fun getTracklist(): LiveData<List<Tracklist>> {
@@ -29,7 +30,6 @@ class TracklistViewModel (application: Application): AndroidViewModel(applicatio
     }
 
     fun getTracklistByPlaylist(playlist_id:Int): LiveData<List<Tracklist>>{
-        _tracklistById = repository.selectTracksByplaylist(playlist_id)
-        return _tracklistById
+        return repository.selectTracksByplaylist(playlist_id)
     }
 }
