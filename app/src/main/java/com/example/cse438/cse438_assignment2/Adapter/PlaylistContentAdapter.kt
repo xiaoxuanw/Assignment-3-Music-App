@@ -13,7 +13,8 @@ import com.example.cse438.cse438_assignment2.R
 import com.example.cse438.cse438_assignment2.infoActivity
 import com.example.cse438.cse438_assignment2.playlistContentActivity
 
-class PlaylistContentViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
+class PlaylistContentViewHolder(private val playlistTitle:String, private val playlistGenre: String,
+                                private val playlistRating:Int,inflater: LayoutInflater, parent: ViewGroup) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.playlist_content_item, parent, false)) {
     private val playlistTrackName : TextView
     private val playlistTrackArtist : TextView
@@ -35,6 +36,8 @@ class PlaylistContentViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         playlistTrackName.text = "Playlist: " + tracklist.trackName
         playlistTrackArtist.text = "Artist: " + tracklist.trackArtistName
         playlistTrackDuration.text = "Duration: " + tracklist.trackTime.toString()
+        playlistTrackGenre.text = "Genre: " + playlistGenre
+        playlistTrackRating.text = "Rating: " + playlistRating
     }
     fun setClickListener(playlist: Playlist, activity: Activity?){
         playlistContentItemLayout.setOnClickListener(){
@@ -55,12 +58,15 @@ class PlaylistContentViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     }
 }
 //create the listener for the recycler view
-class PlaylistContentAdapter(private val list: ArrayList<Tracklist>?, private val activity: Activity?)
+class PlaylistContentAdapter(private val playlistTitle:String, private val playlistGenre: String,
+                             private val playlistRating:Int,val list: ArrayList<Tracklist>?,
+                             private val activity: Activity?)
     : RecyclerView.Adapter<PlaylistContentViewHolder>() {
     private var listEvents : ArrayList<Tracklist>? = list
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaylistContentViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return PlaylistContentViewHolder(inflater, parent)
+        return PlaylistContentViewHolder(playlistTitle,playlistGenre,playlistRating,inflater, parent)
     }
 
     //bind the object

@@ -34,12 +34,14 @@ class PlaylistViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
             val playlistDescription = playlist.playlistDescription
             val playlistGenre = playlist.playlistGenre
             val playlistRating = playlist.playlistRating
+            val playlist_id = playlist.id
             //Intent to info activity
             val intent = Intent(activity, playlistContentActivity::class.java)
             intent.putExtra("playlistName",playlistName)
             intent.putExtra("playlistDescription",playlistDescription)
             intent.putExtra("playlistGenre",playlistGenre)
             intent.putExtra("playlistRating",playlistRating)
+            intent.putExtra("playlist_id",playlist_id)
             activity?.startActivity(intent)
             println("clicked")
         }

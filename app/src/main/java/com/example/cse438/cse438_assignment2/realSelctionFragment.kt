@@ -1,4 +1,4 @@
-package com.example.cse438.cse438_assignment2.Fragment
+package com.example.cse438.cse438_assignment2
 
 import android.app.Activity
 import android.app.AlertDialog

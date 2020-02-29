@@ -33,6 +33,7 @@ class playlistContentActivity : AppCompatActivity() {
     var playlistDescription : String = ""
     var playlistGenre  : String = ""
     var playlistRating : Int = 0
+    var playlist_id : Int = 0
 
     val tracklistList: ArrayList<Tracklist> = ArrayList()
 
@@ -50,6 +51,7 @@ class playlistContentActivity : AppCompatActivity() {
         playlistDescription= intent.getStringExtra("playlistDescription")
         playlistGenre = intent.getStringExtra("playlistGenre")
         playlistRating = intent.getIntExtra("playlistRating",0)
+        playlist_id = intent.getIntExtra("playlist_id",0)
 
     }
 
@@ -62,7 +64,7 @@ class playlistContentActivity : AppCompatActivity() {
         playlistTitle.text = playlistName
 
         //adapter
-        var adapter = PlaylistContentAdapter(tracklistList,this)
+        var adapter = PlaylistContentAdapter(playlistName,playlistGenre,playlistRating,tracklistList,this)
         playlist_content_recycler.adapter = adapter
         playlist_content_recycler.layoutManager = LinearLayoutManager(this)
         playlist_content_recycler.addItemDecoration(
@@ -73,13 +75,12 @@ class playlistContentActivity : AppCompatActivity() {
         )
 
         contentHomeButton.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+           onBackPressed()
         }
 
         viewModel = ViewModelProvider(this).get(TracklistViewModel::class.java)
-        viewModel._tracklist
-        viewModel._tracklist.observe(this, Observer { tracklists ->
+
+        viewModel.getTracklistByPlaylist(playlist_id).observe(this, Observer { tracklists ->
             // Update the cached copy of the words in the adapter.
             tracklistList.clear()
             tracklistList.addAll(tracklists)
