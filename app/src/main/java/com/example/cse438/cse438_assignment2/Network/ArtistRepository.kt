@@ -25,7 +25,7 @@ class ArtistRepository { // search for chart
                         //println(response.body()?.size.toString() + " is the size")
                         resBody.value = response.body()
                         println("success")
-                        println(response)
+                        //println(response)
 
                     } else{
                         //response error

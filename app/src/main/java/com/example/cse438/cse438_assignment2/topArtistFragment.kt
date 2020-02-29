@@ -1,24 +1,17 @@
-package com.example.cse438.cse438_assignment2.Fragment
+package com.example.cse438.cse438_assignment2
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
-import android.widget.EditText
 import android.widget.ImageView
-import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.cse438.cse438_assignment2.Adapter.ArtistViewHolder
 import com.example.cse438.cse438_assignment2.Data.Artist
-import com.example.cse438.cse438_assignment2.R
-import com.example.cse438.cse438_assignment2.TopArtistViewModel
 import kotlinx.android.synthetic.main.fragment_topartist.*
-import kotlinx.android.synthetic.main.fragment_view.*
 
 class topArtistFragment : Fragment() {
     //Instances to be initiated later
