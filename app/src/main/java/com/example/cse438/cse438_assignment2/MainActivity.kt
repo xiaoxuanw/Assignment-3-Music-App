@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cse438.cse438_assignment2.Adapter.TrackListAdapter
 import com.example.cse438.cse438_assignment2.Data.Playlist
+import com.example.cse438.cse438_assignment2.Fragment.topArtistFragment
 import com.example.cse438.cse438_assignment2.R
 import com.example.cse438.cse438_assignment2.fragment.playListFragment
 import com.google.android.material.tabs.TabItem
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(homeFragment(), "Home")
         adapter.addFragment(playListFragment(), "PlayList")
+        adapter.addFragment(topArtistFragment(), "Top Artist")
         viewPager?.adapter = adapter
         tabs.setupWithViewPager(viewPager)
 

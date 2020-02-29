@@ -26,7 +26,6 @@ class homeFragment : Fragment() {
     lateinit var searchButton: SearchView
     lateinit var searchBox: EditText
     lateinit var albumCover: List<ImageView>
-    lateinit var tabLayout: TabLayout
 
     //An arraylist that holds the tracks
     var  trackList: ArrayList<Track> = ArrayList()

@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -68,17 +69,24 @@ class playListFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
 
 
-        // Sets an onclick listener on the dialog box button
-        mAlertDialog.submitPlaylist.setOnClickListener {
-            val p = Playlist(
-                dialogView.playlistName.text.toString(),
-                dialogView.playlistDescription.text.toString(),
-                dialogView.playlistGenre.text.toString(),
-                dialogView.playlistRating.text.toString().toInt()
-            )
-            // If the string is empty, we do not want to accept that as an input
-            viewModel!!.insert(p)
-            mAlertDialog.dismiss()
+        if(dialogView.playlistRating.text.toString().toIntOrNull() == null || dialogView.playlistName.text.toString() ==""
+            || dialogView.playlistDescription.text.toString() == ""
+            || dialogView.playlistGenre.text.toString() == ""){
+            Toast.makeText(this.context,"Enter valid fields: fields cannot be emoty, " +
+                    "rating can only be an integer", Toast.LENGTH_SHORT).show();
+        }else {
+            // Sets an onclick listener on the dialog box button
+            mAlertDialog.submitPlaylist.setOnClickListener {
+                val p = Playlist(
+                    dialogView.playlistName.text.toString(),
+                    dialogView.playlistDescription.text.toString(),
+                    dialogView.playlistGenre.text.toString(),
+                    dialogView.playlistRating.text.toString().toInt()
+                )
+                // If the string is empty, we do not want to accept that as an input
+                viewModel!!.insert(p)
+                mAlertDialog.dismiss()
+            }
         }
 
     }

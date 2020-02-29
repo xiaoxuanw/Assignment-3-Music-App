@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.cse438.cse438_assignment2.Fragment.realSelectionFragment
+//import com.example.cse438.cse438_assignment2.Fragment.selectionFragment
 import kotlinx.android.synthetic.main.activity_playlist.*
 import kotlinx.android.synthetic.main.create_playlist.*
 import kotlinx.android.synthetic.main.create_playlist.view.*
@@ -33,36 +33,36 @@ class PlaylistActivity : AppCompatActivity() {
         trackTitle = intent!!.getStringExtra("trackTitle")
         trackArtistName = intent!!.getStringExtra("trackArtistName")
         trackAlbumTitle = intent!!.getStringExtra("trackAlbumTitle")
-        trackRank = intent!!.getIntExtra("trackRank",0)
-        trackDuration = intent!!.getIntExtra("trackDuration",0)
+        trackRank = intent!!.getIntExtra("trackRank", 0)
+        trackDuration = intent!!.getIntExtra("trackDuration", 0)
         trackAlbumCover = intent!!.getStringExtra("trackAlbumCover")
 
-        //set up selection fragment
-        val fragment =
-            realSelectionFragment()
-        var bundle = Bundle()
-        fragment.arguments=bundle
-        bundle.putString("trackTitle",trackTitle)
-        bundle.putString("trackArtistName",trackArtistName)
-        bundle.putString("trackAlbumTitle",trackAlbumTitle)
-        bundle.putInt("trackRank",trackRank)
-        bundle.putInt("trackDuration",trackDuration)
-        bundle.putString("trackAlbumCover",trackAlbumCover)
+//        //set up selection fragment
+//        val fragment =
+//            selectionFragment()
+//        var bundle = Bundle()
+//        fragment.arguments=bundle
+//        bundle.putString("trackTitle",trackTitle)
+//        bundle.putString("trackArtistName",trackArtistName)
+//        bundle.putString("trackAlbumTitle",trackAlbumTitle)
+//        bundle.putInt("trackRank",trackRank)
+//        bundle.putInt("trackDuration",trackDuration)
+//        bundle.putString("trackAlbumCover",trackAlbumCover)
+//
+//        //Contains slection fragment
+//        val transaction = supportFragmentManager.beginTransaction()
+//        transaction.replace(R.id.playlist_container, fragment)
+//        transaction.commit()
+//
+//    }
+//
+//        override fun onStart() {
+//            super.onStart()
+//
+//        }
 
-        //Contains slection fragment
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.playlist_container, fragment)
-        transaction.commit()
-
-    }
-
-    override fun onStart() {
-        super.onStart()
 
     }
 
 
 }
-
-
-

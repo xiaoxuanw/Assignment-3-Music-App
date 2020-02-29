@@ -1,6 +1,7 @@
 package com.example.cse438.cse438_assignment2.Adapter
 
 import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.RelativeLayout
@@ -8,6 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cse438.cse438_assignment2.Data.Playlist
 import com.example.cse438.cse438_assignment2.R
+import com.example.cse438.cse438_assignment2.infoActivity
+import com.example.cse438.cse438_assignment2.playlistContentActivity
 
 class PlaylistViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.playlist_item, parent, false)) {
@@ -26,6 +29,18 @@ class PlaylistViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     }
     fun setClickListener(playlist: Playlist, activity: Activity?){
         playlistItemLayout.setOnClickListener(){
+            //variables from the playlist
+            val playlistName = playlist.playlistName
+            val playlistDescription = playlist.playlistDescription
+            val playlistGenre = playlist.playlistGenre
+            val playlistRating = playlist.playlistRating
+            //Intent to info activity
+            val intent = Intent(activity, playlistContentActivity::class.java)
+            intent.putExtra("playlistName",playlistName)
+            intent.putExtra("playlistDescription",playlistDescription)
+            intent.putExtra("playlistGenre",playlistGenre)
+            intent.putExtra("playlistRating",playlistRating)
+            activity?.startActivity(intent)
             println("clicked")
         }
     }
