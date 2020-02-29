@@ -69,14 +69,14 @@ class playListFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
 
 
-        if(dialogView.playlistRating.text.toString().toIntOrNull() == null || dialogView.playlistName.text.toString() ==""
-            || dialogView.playlistDescription.text.toString() == ""
-            || dialogView.playlistGenre.text.toString() == ""){
-            Toast.makeText(this.context,"Enter valid fields: fields cannot be emoty, " +
-                    "rating can only be an integer", Toast.LENGTH_SHORT).show();
-        }else {
-            // Sets an onclick listener on the dialog box button
-            mAlertDialog.submitPlaylist.setOnClickListener {
+        // Sets an onclick listener on the dialog box button
+        mAlertDialog.submitPlaylist.setOnClickListener {
+            if (dialogView.playlistRating.text.toString().toIntOrNull() == null || dialogView.playlistName.text.toString() == ""
+                || dialogView.playlistDescription.text.toString()==""
+                || dialogView.playlistGenre.text.toString() == ""
+            ) {
+                Toast.makeText(activity,"Enter all fields, rating must be an integer", Toast.LENGTH_SHORT).show();
+            } else {
                 val p = Playlist(
                     dialogView.playlistName.text.toString(),
                     dialogView.playlistDescription.text.toString(),
@@ -88,8 +88,9 @@ class playListFragment : Fragment() {
                 mAlertDialog.dismiss()
             }
         }
-
     }
+
+
     override fun onStart() {
         super.onStart()
 

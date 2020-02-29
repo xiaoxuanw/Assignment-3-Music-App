@@ -11,9 +11,21 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cse438.cse438_assignment2.Adapter.PlaylistAdapter
+import com.example.cse438.cse438_assignment2.Adapter.PlaylistContentAdapter
+import com.example.cse438.cse438_assignment2.Data.Playlist
+import com.example.cse438.cse438_assignment2.Data.PlaylistRoomDatabase
+import com.example.cse438.cse438_assignment2.Data.Tracklist
+import com.example.cse438.cse438_assignment2.Network.TracklistRepository
 
 import com.example.cse438.cse438_assignment2.R
 import kotlinx.android.synthetic.main.activity_playlist_content.*
+import kotlinx.android.synthetic.main.fragment_playlist.*
 
 class playlistContentActivity : AppCompatActivity() {
 
@@ -22,8 +34,11 @@ class playlistContentActivity : AppCompatActivity() {
     var playlistGenre  : String = ""
     var playlistRating : Int = 0
 
+    val tracklistList: ArrayList<Tracklist> = ArrayList()
+
     lateinit var playlistTitle: TextView
     lateinit var contentHomeButton: Button
+    private lateinit var viewModel: TracklistViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,9 +61,30 @@ class playlistContentActivity : AppCompatActivity() {
         playlistTitle = content_playlist_title
         playlistTitle.text = playlistName
 
+        //adapter
+        var adapter = PlaylistContentAdapter(tracklistList,this)
+        playlist_content_recycler.adapter = adapter
+        playlist_content_recycler.layoutManager = LinearLayoutManager(this)
+        playlist_content_recycler.addItemDecoration(
+            DividerItemDecoration(
+                this,
+                DividerItemDecoration.VERTICAL
+            )
+        )
+
         contentHomeButton.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
+        viewModel = ViewModelProvider(this).get(TracklistViewModel::class.java)
+        viewModel._tracklist
+        viewModel._tracklist.observe(this, Observer { tracklists ->
+            // Update the cached copy of the words in the adapter.
+            tracklistList.clear()
+            tracklistList.addAll(tracklists)
+            adapter.notifyDataSetChanged()
+        })
+
     }
 }
