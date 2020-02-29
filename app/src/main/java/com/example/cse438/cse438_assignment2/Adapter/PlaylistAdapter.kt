@@ -12,7 +12,7 @@ import com.example.cse438.cse438_assignment2.R
 import com.example.cse438.cse438_assignment2.infoActivity
 import com.example.cse438.cse438_assignment2.playlistContentActivity
 
-class PlaylistViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
+class PlaylistViewHolder(private val list: ArrayList<Playlist>?,inflater: LayoutInflater, parent: ViewGroup) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.playlist_item, parent, false)) {
     private val playlistName : TextView
     private val playlistDescription : TextView
@@ -53,7 +53,7 @@ class PlaylistAdapter(private val list: ArrayList<Playlist>?,private val activit
     private var listEvents : ArrayList<Playlist>? = list
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaylistViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return PlaylistViewHolder(inflater, parent)
+        return PlaylistViewHolder(list,inflater, parent)
     }
 
     //bind the object

@@ -52,16 +52,7 @@ class playlistContentActivity : AppCompatActivity() {
         playlistGenre = intent.getStringExtra("playlistGenre")
         playlistRating = intent.getIntExtra("playlistRating",0)
         playlist_id = intent.getIntExtra("playlist_id",0)
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        //set lateinits
-        contentHomeButton = playlist_content_home_button
-        playlistTitle = content_playlist_title
-        playlistTitle.text = playlistName
+        println(playlist_id)
 
         //adapter
         var adapter = PlaylistContentAdapter(playlistName,playlistGenre,playlistRating,tracklistList,this)
@@ -74,10 +65,6 @@ class playlistContentActivity : AppCompatActivity() {
             )
         )
 
-        contentHomeButton.setOnClickListener{
-           onBackPressed()
-        }
-
         viewModel = ViewModelProvider(this).get(TracklistViewModel::class.java)
 
         viewModel.getTracklistByPlaylist(playlist_id).observe(this, Observer { tracklists ->
@@ -86,6 +73,20 @@ class playlistContentActivity : AppCompatActivity() {
             tracklistList.addAll(tracklists)
             adapter.notifyDataSetChanged()
         })
+    }
 
+    override fun onStart() {
+        super.onStart()
+
+        //set lateinits
+        contentHomeButton = playlist_content_home_button
+        playlistTitle = content_playlist_title
+        playlistTitle.text = "Playlist: " + playlistName
+
+
+
+        contentHomeButton.setOnClickListener{
+           onBackPressed()
+        }
     }
 }

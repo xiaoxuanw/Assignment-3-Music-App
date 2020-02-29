@@ -33,7 +33,7 @@ class PlaylistContentViewHolder(private val playlistTitle:String, private val pl
         playlistTrackRating = itemView.findViewById(R.id.playlistTrackRating)
     }
     fun bind(tracklist: Tracklist) {
-        playlistTrackName.text = "Playlist: " + tracklist.trackName
+        playlistTrackName.text = "Track: " + tracklist.trackName
         playlistTrackArtist.text = "Artist: " + tracklist.trackArtistName
         playlistTrackDuration.text = "Duration: " + tracklist.trackTime.toString()
         playlistTrackGenre.text = "Genre: " + playlistGenre
