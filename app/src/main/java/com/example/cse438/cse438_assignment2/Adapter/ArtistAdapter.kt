@@ -19,26 +19,43 @@ class ArtistViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.artist_item, parent, false)) {
     private val artistNameView: TextView = itemView.findViewById(R.id.artist_Name)
     private val artistImage: ImageView = itemView.findViewById(R.id.artist_image)
+
     fun bind(artist: Artist){
         artistNameView.text = artist.name
-    }
-    fun setClickListener(artist: Artist, activity: Activity?){
-        artistImage.setOnClickListener(){
-            //extract artist's playlist
-            var artistPlaylist = artist.tracklist
-
-            var context = artistImage.context
-
-            val intent = Intent(activity, artistActivity::class.java)
-            intent.putExtra("artistPlaylist", artistPlaylist)
-            context.startActivity(intent)
-        }
     }
     fun bindImage(artist: Artist){
         Picasso.get()
             .load(artist.picture_small)
             .into(artistImage)
     }
+    fun setClickListener(artist: Artist, activity: Activity?){
+        artistImage.setOnClickListener{
+            //extract artist's info
+            var artistName = artist.name
+            var artistShareLink = artist.share
+            var artistPicture = artist.picture_small
+            var nbAlbum  = artist.nb_album
+            var nbFan = artist.nb_fan
+            var radio = artist.radio
+
+            println(artistName)
+            println(nbFan)
+
+            var context = artistImage.context
+
+            val intent = Intent(activity, artistActivity::class.java)
+            intent.putExtra("artistName", artistName )
+            intent.putExtra("artistShareLink", artistShareLink)
+            intent.putExtra("artistPicture", artistPicture)
+            intent.putExtra("nb_album", nbAlbum)
+            intent.putExtra("nb_fan", nbFan)
+            intent.putExtra("radio",radio)
+            context.startActivity(intent)
+            println("clicked")
+
+        }
+    }
+
     //define the adapter for the recycler view
     class ArtistAdapter(private val list: ArrayList<Artist>, private val activity: Activity?)
         : RecyclerView.Adapter<ArtistViewHolder>() {
