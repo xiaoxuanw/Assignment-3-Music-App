@@ -76,17 +76,14 @@ class playlistContentActivity : AppCompatActivity() {
         var adapter = PlaylistContentAdapter(playlistName,playlistGenre,playlistRating,tracklistList,this)
         //Viewmodel actions
         viewModel = ViewModelProvider(this).get(TracklistViewModel::class.java)
-        println(playlist_id)
         viewModel.getTracklistByPlaylist(playlist_id).observe(this, Observer { tracklists ->
             // Update the cached copy of the tracklists in the adapter.
             tracklistList.clear()
             tracklistList.addAll(tracklists)
             println("1: " + tracklistList)
-            print("2: " +tracklists)
+            println("2: " + tracklists)
             adapter.notifyDataSetChanged()
         })
-
-        adapter = PlaylistContentAdapter(playlistName,playlistGenre,playlistRating,tracklistList,this)
         playlist_content_recycler.adapter = adapter
         playlist_content_recycler.layoutManager = LinearLayoutManager(this)
         playlist_content_recycler.addItemDecoration(

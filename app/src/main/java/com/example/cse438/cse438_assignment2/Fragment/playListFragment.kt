@@ -35,22 +35,6 @@ class playListFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         val activity: Activity? = activity
-        var adapter = PlaylistAdapter(playlistList,activity)
-        playlist_recycler_view.adapter = adapter
-        playlist_recycler_view.layoutManager = LinearLayoutManager(this.context)
-        playlist_recycler_view.addItemDecoration(
-            DividerItemDecoration(
-                context,
-                DividerItemDecoration.VERTICAL
-            )
-        )
-        viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
-        viewModel!!._playlist.observe(this, Observer { playlists ->
-            // Update the cached copy of the words in the adapter.
-            playlistList.clear()
-            playlistList.addAll(playlists)
-            adapter.notifyDataSetChanged()
-        })
     }
 
     override fun onCreateView(
@@ -123,11 +107,12 @@ class playListFragment : Fragment() {
             )
         )
         viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
-        viewModel!!._playlist.observe(this, Observer { playlists ->
+        viewModel!!._playlist.observe(viewLifecycleOwner, Observer { playlists ->
             // Update the cached copy of the words in the adapter.
             playlistList.clear()
             playlistList.addAll(playlists)
             adapter.notifyDataSetChanged()
+
         })
     }
 }

@@ -48,7 +48,7 @@ class topArtistFragment : Fragment() {
         recyclerView.layoutManager = GridLayoutManager(this.context, 2)
 
         //observe the allEvents LiveData
-        viewModel.chartartistList.observe(this, Observer { artists ->
+        viewModel.chartartistList.observe(viewLifecycleOwner, Observer { artists ->
             // Update the cached copy of the words in the adapter.
             chartArtistList.clear()
             chartArtistList.addAll(artists.data)

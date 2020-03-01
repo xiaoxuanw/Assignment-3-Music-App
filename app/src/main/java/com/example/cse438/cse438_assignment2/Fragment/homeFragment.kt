@@ -60,7 +60,7 @@ class homeFragment : Fragment() {
         recyclerView.layoutManager = GridLayoutManager(this.context,2)
 
         //observe the allEvents LiveData
-        viewModel.chartList.observe(this, Observer { tracks ->
+        viewModel.chartList.observe(viewLifecycleOwner, Observer { tracks ->
             // Update the cached copy of the words in the adapter.
             chartList.clear()
             chartList.addAll(tracks.data)
@@ -96,5 +96,11 @@ class homeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+
     }
 }

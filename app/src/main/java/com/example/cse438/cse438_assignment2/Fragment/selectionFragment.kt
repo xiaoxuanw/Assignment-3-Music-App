@@ -83,7 +83,7 @@ class selectionFragment : Fragment() {
             )
         )
         viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
-        viewModel!!._playlist.observe(this, Observer { playlists ->
+        viewModel!!._playlist.observe(viewLifecycleOwner, Observer { playlists ->
             // Update the cached copy of the words in the adapter.
             playlistList.clear()
             playlistList.addAll(playlists)
