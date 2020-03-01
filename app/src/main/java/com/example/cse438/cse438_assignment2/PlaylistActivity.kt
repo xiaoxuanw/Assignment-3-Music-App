@@ -13,8 +13,6 @@ import kotlinx.android.synthetic.main.create_playlist.*
 import kotlinx.android.synthetic.main.create_playlist.view.*
 
 class PlaylistActivity : AppCompatActivity() {
-    val playlistList: ArrayList<Playlist> = ArrayList()
-    val trackInPlaylist: ArrayList<Playlist> = ArrayList()
 
     var trackTitle: String = ""
     var trackArtistName: String = ""

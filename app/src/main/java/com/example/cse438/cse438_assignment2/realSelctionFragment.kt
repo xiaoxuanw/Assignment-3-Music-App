@@ -44,8 +44,8 @@ class realSelectionFragment : Fragment() {
         trackTitle = intent.getStringExtra("trackTitle")
         trackArtistName = intent.getStringExtra("trackArtistName")
         trackAlbumTitle = intent.getStringExtra("trackAlbumTitle")
-        trackRank = intent.getIntExtra("trackRank",0)
-        trackDuration = intent.getIntExtra("trackDuration",0)
+        trackRank = intent.getIntExtra("trackRank", 0)
+        trackDuration = intent.getIntExtra("trackDuration", 0)
         trackAlbumCover = intent.getStringExtra("trackAlbumCover")
 
     }
@@ -64,18 +64,22 @@ class realSelectionFragment : Fragment() {
         //set the view model
         viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
 
-
-
     }
-
 
     override fun onStart() {
         super.onStart()
 
         val activity: Activity? = activity
-        var adapter = PlaylistSelectionAdapter(playlistList,activity,trackTitle,trackArtistName,trackDuration)
+        var adapter = PlaylistSelectionAdapter(
+            playlistList,
+            activity,
+            trackTitle,
+            trackArtistName,
+            trackDuration
+        )
         playlist_selection_recycler.adapter = adapter
-        playlist_selection_recycler.layoutManager = LinearLayoutManager(this.context) as RecyclerView.LayoutManager?
+        playlist_selection_recycler.layoutManager =
+            LinearLayoutManager(this.context) as RecyclerView.LayoutManager?
         playlist_selection_recycler.addItemDecoration(
             DividerItemDecoration(
                 context,

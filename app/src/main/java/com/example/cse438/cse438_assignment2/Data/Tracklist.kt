@@ -17,8 +17,8 @@ data class Tracklist(
     val trackArtistName: String,
     @ColumnInfo(name = "trackTime")
     val trackTime: Int,
-    @ColumnInfo(name = "playlist_id")
-    val playlist_id: Int
+   @ColumnInfo(name = "playlist_id")
+   val playlist_id: Int
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

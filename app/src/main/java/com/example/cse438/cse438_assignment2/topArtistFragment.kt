@@ -16,13 +16,10 @@ import kotlinx.android.synthetic.main.fragment_topartist.*
 class topArtistFragment : Fragment() {
     //Instances to be initiated later
     lateinit var viewModel: TopArtistViewModel
-    lateinit var albumCover: List<ImageView>
 
-    //An arraylist that holds the artist
-    var  ArtistList: ArrayList<Artist> = ArrayList()
+    //An array list that holds the artist
     var chartArtistList: ArrayList<Artist> = ArrayList()
 
-    //oncreate
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -58,4 +55,4 @@ class topArtistFragment : Fragment() {
         //autofill the recycler view on creation
         viewModel.getCover()
     }
-    }
+}
