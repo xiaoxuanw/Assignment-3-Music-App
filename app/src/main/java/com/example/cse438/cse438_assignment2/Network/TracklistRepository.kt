@@ -32,5 +32,10 @@ class TracklistRepository (private val tracklistDao: TracklistDao){
         return tracklistById
     }
 
+    fun deleteTrackForPlaylist(playlist_id: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+            tracklistDao.deleteTracksForPlaylist(playlist_id)
+        }
+    }
 
 }

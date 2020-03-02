@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class PlaylistRepository(private val playlistDao: PlaylistDao) {
 
     val allPlaylist: LiveData<List<Playlist>> = playlistDao.getPlaylists()
-
+    var playlist_id: Int=0
     fun insert(playlist: Playlist){
         CoroutineScope(Dispatchers.IO).launch {
             playlistDao!!.insert(playlist)
@@ -24,4 +24,10 @@ class PlaylistRepository(private val playlistDao: PlaylistDao) {
         }
     }
 
+    fun getPlaylistIdByName(playlistName: String) : Int{
+        CoroutineScope(Dispatchers.IO).launch {
+            playlist_id=playlistDao!!.getPlaylistIdByName(playlistName)
+        }
+        return playlist_id
+    }
 }

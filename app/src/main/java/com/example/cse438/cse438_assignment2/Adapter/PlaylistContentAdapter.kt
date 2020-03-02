@@ -4,12 +4,19 @@ import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cse438.cse438_assignment2.Data.Playlist
+import com.example.cse438.cse438_assignment2.Data.PlaylistRoomDatabase
 import com.example.cse438.cse438_assignment2.Data.Tracklist
+import com.example.cse438.cse438_assignment2.Network.PlaylistRepository
+import com.example.cse438.cse438_assignment2.Network.TracklistDao
+import com.example.cse438.cse438_assignment2.Network.TracklistRepository
 import com.example.cse438.cse438_assignment2.R
+import com.example.cse438.cse438_assignment2.TracklistViewModel
 import com.example.cse438.cse438_assignment2.infoActivity
 import com.example.cse438.cse438_assignment2.playlistContentActivity
 
@@ -23,6 +30,8 @@ class PlaylistContentViewHolder(private val playlistTitle:String, private val pl
     private val playlistTrackDuration : TextView
     private val playlistTrackRating : TextView
     private val playlistContentItemLayout: RelativeLayout = itemView.findViewById(R.id.playlist_content_item_layout)
+    private val contentDeleteButton: Button = itemView.findViewById(R.id.content_delete_button)
+    private val parent = parent
 
     init {
         playlistTrackName = itemView.findViewById(R.id.playlistTrackName)
@@ -39,21 +48,16 @@ class PlaylistContentViewHolder(private val playlistTitle:String, private val pl
         playlistTrackGenre.text = "Genre: " + playlistGenre
         playlistTrackRating.text = "Rating: " + playlistRating
     }
-    fun setClickListener(playlist: Playlist, activity: Activity?){
-        playlistContentItemLayout.setOnClickListener(){
-            //variables from the playlist
-            val playlistName = playlist.playlistName
-            val playlistDescription = playlist.playlistDescription
-            val playlistGenre = playlist.playlistGenre
-            val playlistRating = playlist.playlistRating
-            //Intent to info activity
-            val intent = Intent(activity, playlistContentActivity::class.java)
-            intent.putExtra("playlistName",playlistName)
-            intent.putExtra("playlistDescription",playlistDescription)
-            intent.putExtra("playlistGenre",playlistGenre)
-            intent.putExtra("playlistRating",playlistRating)
-            activity?.startActivity(intent)
-            println("clicked")
+    fun setClickListener(activity: Activity?){
+        contentDeleteButton.setOnClickListener(){
+            val playlistDao = PlaylistRoomDatabase.getDatabase(activity?.applicationContext).playlistDao()
+            val tracklistDao = PlaylistRoomDatabase.getDatabase(context = activity?.applicationContext).tracklistDao()
+            val playlistRepository = PlaylistRepository(playlistDao)
+            val repository = TracklistRepository(tracklistDao)
+            val playlist_id = playlistRepository.getPlaylistIdByName(playlistTitle)
+            repository.deleteTrackForPlaylist(playlist_id)
+            println("delete clicked")
+            //val viewModel = ViewModelProvider(activity).get(TracklistViewModel::class.java)
         }
     }
 }
@@ -73,7 +77,7 @@ class PlaylistContentAdapter(private val playlistTitle:String, private val playl
     override fun onBindViewHolder(holder: PlaylistContentViewHolder, position: Int) {
         val event: Tracklist = listEvents!!.get(position)
         holder.bind(event)
-        //holder.setClickListener(event,activity)
+        holder.setClickListener(activity)
     }
 
     //set the count

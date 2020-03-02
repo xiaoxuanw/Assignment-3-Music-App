@@ -32,4 +32,8 @@ class TracklistViewModel (application: Application): AndroidViewModel(applicatio
     fun getTracklistByPlaylist(playlist_id:Int): LiveData<List<Tracklist>>{
         return repository.selectTracksByplaylist(playlist_id)
     }
+
+    fun deleteTracklistForPlaylist(playlist_id: Int){
+        return repository.deleteTrackForPlaylist(playlist_id)
+    }
 }

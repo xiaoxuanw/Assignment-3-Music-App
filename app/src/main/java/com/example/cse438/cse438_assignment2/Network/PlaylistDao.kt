@@ -20,4 +20,7 @@ interface PlaylistDao {
     @Query("DELETE FROM playlist")
     fun deleteAll()
 
+    @Query("SELECT id FROM PLAYLIST WHERE playlistName = :playlist_Name")
+    fun getPlaylistIdByName(playlist_Name: String) : Int
+
 }
