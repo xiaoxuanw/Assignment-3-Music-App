@@ -1,3 +1,10 @@
+Grade:82/100
+-7 cannot view playlists and no join is used
+-4  Users can add songs to playlist
+-4 Users can delete songs from a playlist
+-3 Code is well organized in folders and easy to read
+
+
 In this file you should include:
 
 Any information you think we should know about your submission
